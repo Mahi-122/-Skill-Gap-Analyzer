@@ -1,0 +1,446 @@
+/* ================================
+   SKILL GAP ANALYZER
+   GLASSMORPHISM UI
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.35), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(168, 85, 247, 0.30), transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(14, 165, 233, 0.25), transparent 40%),
+    linear-gradient(135deg, #080b18, #11162b 50%, #080b18);
+
+  color: white;
+}
+
+/* Main container */
+
+.app {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow circles */
+
+.app::before,
+.app::after {
+  content: "";
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  filter: blur(80px);
+
+  opacity: 0.35;
+
+  pointer-events: none;
+}
+
+.app::before {
+  background: #6366f1;
+  top: -100px;
+  left: -100px;
+}
+
+.app::after {
+  background: #a855f7;
+  bottom: -120px;
+  right: -100px;
+}
+
+/* Glass card */
+
+.card {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 42px 38px;
+
+  position: relative;
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.09);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+
+  text-align: center;
+}
+
+/* Heading */
+
+.card h1 {
+  font-size: 32px;
+  font-weight: 700;
+
+  margin-bottom: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #c4b5fd,
+    #93c5fd
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle */
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  margin-bottom: 30px;
+}
+
+/* Inputs */
+
+.card input {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  margin-bottom: 16px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  background: rgba(255, 255, 255, 0.07);
+
+  color: white;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Placeholder */
+
+.card input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Input focus */
+
+.card input:focus {
+  border-color: rgba(167, 139, 250, 0.8);
+
+  background: rgba(255, 255, 255, 0.11);
+
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, 0.12),
+    0 0 25px rgba(139, 92, 246, 0.12);
+}
+
+/* Register button */
+
+.card button {
+  width: 100%;
+
+  margin-top: 8px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6,
+      #a855f7
+    );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px rgba(99, 102, 241, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+/* Button hover */
+
+.card button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 35px rgba(139, 92, 246, 0.5);
+
+  filter: brightness(1.08);
+}
+
+/* Button click */
+
+.card button:active {
+  transform: translateY(0);
+}
+
+/* Message */
+
+.message {
+  min-height: 24px;
+
+  margin-top: 20px;
+
+  font-size: 13px;
+
+  color: rgba(255, 255, 255, 0.75);
+
+  line-height: 1.5;
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .app {
+    padding: 20px;
+  }
+
+  .card {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .card h1 {
+    font-size: 27px;
+  }
+}
+/* Login / Register switch */
+
+.switch {
+  margin-top: 22px;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 13px;
+}
+
+.switch-button {
+  width: auto !important;
+
+  margin: 0 0 0 6px !important;
+
+  padding: 0 !important;
+
+  border: none !important;
+
+  background: transparent !important;
+
+  color: #c4b5fd !important;
+
+  font-size: 13px !important;
+
+  font-weight: 600;
+
+  box-shadow: none !important;
+
+  cursor: pointer;
+}
+
+.switch-button:hover {
+  color: #ffffff !important;
+
+  transform: none !important;
+
+  box-shadow: none !important;
+
+  filter: none !important;
+}
+/* ================================
+   DASHBOARD
+================================ */
+
+.dashboard {
+  width: 100%;
+  max-width: 900px;
+  padding: 45px;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard h1 {
+  font-size: 38px;
+  margin-bottom: 8px;
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #c4b5fd,
+    #93c5fd
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 35px;
+}
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  padding: 30px;
+  margin-bottom: 22px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-card h2 {
+  color: white;
+  margin-bottom: 12px;
+}
+
+.dashboard-card p {
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.dashboard-card button {
+  width: auto;
+  min-width: 180px;
+  padding: 13px 22px;
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 25px 18px;
+  }
+
+  .dashboard h1 {
+    font-size: 30px;
+  }
+}
+/* ================================
+   SKILL ANALYSIS FORM
+================================ */
+
+.dashboard-card input,
+.dashboard-card select {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 16px;
+  margin: 8px auto 22px;
+  display: block;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  font-size: 14px;
+  outline: none;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition: 0.25s ease;
+}
+
+.dashboard-card input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.dashboard-card input:focus,
+.dashboard-card select:focus {
+  border-color: rgba(167, 139, 250, 0.8);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+.dashboard-card select {
+  cursor: pointer;
+}
+
+.dashboard-card select option {
+  background: #20243d;
+  color: white;
+}
+
+.dashboard-card h2 {
+  margin-top: 8px;
+}
+
+.back-button {
+  margin-left: 12px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+/* Skill List */
+.skill-list {
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.skill-list li {
+  margin: 10px 0;
+  padding: 8px 12px;
+  font-size: 16px;
+}
