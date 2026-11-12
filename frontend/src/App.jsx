@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./App.css";
 
@@ -18,6 +17,10 @@ function App() {
 
   const [analysisResult, setAnalysisResult] = useState(null);
   const [message, setMessage] = useState("");
+
+  // Railway Backend URL
+  const API_BASE_URL =
+    "https://skill-gap-analyzer-production-e4219ed5.up.railway.app";
 
   // Career-wise required skills
   const careerSkills = {
@@ -145,8 +148,8 @@ function App() {
 
     try {
       const endpoint = isLogin
-        ? "http://localhost:8080/api/users/login"
-        : "http://localhost:8080/api/users/register";
+        ? `${API_BASE_URL}/api/users/login`
+        : `${API_BASE_URL}/api/users/register`;
 
       const body = isLogin
         ? {
